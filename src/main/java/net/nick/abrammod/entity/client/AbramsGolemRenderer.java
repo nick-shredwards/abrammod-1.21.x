@@ -2,8 +2,10 @@ package net.nick.abrammod.entity.client;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.nick.abrammod.AbramMod;
 import net.nick.abrammod.entity.custom.AbramsGolemEntity;
@@ -22,6 +24,13 @@ public class AbramsGolemRenderer extends MobEntityRenderer<AbramsGolemEntity, Ab
 
     @Override
     public Identifier getTexture(AbramsGolemEntityRenderState state) {
-        return Identifier.of(AbramMod.MOD_ID, "textures/entity/abrams-golem/abrams-golem.png");
+        return Identifier.of(AbramMod.MOD_ID, "textures/entity/abrams_golem/abrams_golem.png");
+    }
+
+    @Override
+    public void updateRenderState(AbramsGolemEntity entity, AbramsGolemEntityRenderState renderState, float tickDelta) {
+        super.updateRenderState(entity, renderState, tickDelta);
+
+        renderState.idleAnimationState.copyFrom(entity.idleAnimationState);
     }
 }

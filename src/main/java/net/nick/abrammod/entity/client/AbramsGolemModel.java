@@ -2,6 +2,8 @@ package net.nick.abrammod.entity.client;
 
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.entity.animation.Animation;
+import net.minecraft.client.render.entity.animation.AnimationDefinition;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -10,7 +12,7 @@ import net.minecraft.util.math.MathHelper;
 import net.nick.abrammod.AbramMod;
 
 public class AbramsGolemModel extends EntityModel<AbramsGolemEntityRenderState> {
-    public static final EntityModelLayer ABRAMS_GOLEM = new EntityModelLayer(Identifier.of(AbramMod.MOD_ID, "abrams-golem"), "main");
+    public static final EntityModelLayer ABRAMS_GOLEM = new EntityModelLayer(Identifier.of(AbramMod.MOD_ID, "abrams_golem"), "main");
 
     private final ModelPart AbramsGolem;
     private final ModelPart body;
@@ -20,6 +22,9 @@ public class AbramsGolemModel extends EntityModel<AbramsGolemEntityRenderState> 
     private final ModelPart right_leg;
     private final ModelPart left_leg;
     private final ModelPart head;
+
+    private final Animation walkingAnimation;
+    private final Animation idlingAnimation;
 
     public AbramsGolemModel(ModelPart root) {
         super(root);
@@ -31,6 +36,9 @@ public class AbramsGolemModel extends EntityModel<AbramsGolemEntityRenderState> 
         this.right_leg = this.legs.getChild("right_leg");
         this.left_leg = this.legs.getChild("left_leg");
         this.head = this.AbramsGolem.getChild("head");
+
+        this.walkingAnimation = AbramsGolemAnimations.MODEL_WALK.createAnimation(root);
+        this.idlingAnimation = AbramsGolemAnimations.MODEL_IDLE.createAnimation(root);
     }
 
     public static TexturedModelData getTexturedModelData() {
@@ -73,15 +81,15 @@ public class AbramsGolemModel extends EntityModel<AbramsGolemEntityRenderState> 
     @Override
     public void setAngles(AbramsGolemEntityRenderState renderState) {
         super.setAngles(renderState);
-        float g = renderState.limbSwingAmplitude;
-        float h = renderState.limbSwingAnimationProgress;
+        this.setHeadAngles(renderState.relativeHeadYaw, renderState.pitch);
 
-        this.head.yaw = renderState.relativeHeadYaw * (float) (Math.PI / 180.0);
-        this.head.pitch = renderState.pitch * (float) (Math.PI / 180.0);
-        this.right_leg.pitch = -1.5F * MathHelper.wrap(h, 13.0F) * g;
-        this.left_leg.pitch = 1.5F * MathHelper.wrap(h, 13.0F) * g;
-        this.right_leg.yaw = 0.0F;
-        this.left_leg.yaw = 0.0F;
+        this.walkingAnimation.applyWalking(renderState.limbSwingAnimationProgress, renderState.limbSwingAmplitude, 2f, 2.5f);
+        this.idlingAnimation.apply(renderState.idleAnimationState, renderState.age, 1f);
+    }
+
+    private void setHeadAngles(float headYaw, float headPitch) {
+        this.head.yaw = headYaw * (float) (Math.PI / 180.0);
+        this.head.pitch = headPitch * (float) (Math.PI / 180.0);
     }
 
 }

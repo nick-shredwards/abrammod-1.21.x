@@ -13,10 +13,10 @@ import net.nick.abrammod.entity.custom.AbramsGolemEntity;
 public class ModEntities {
     public static final EntityType<AbramsGolemEntity> ABRAMS_GOLEM = Registry.register(
             Registries.ENTITY_TYPE,
-            Identifier.of(AbramMod.MOD_ID, "abrams-golem"),
+            Identifier.of(AbramMod.MOD_ID, "abrams_golem"),
             EntityType.Builder.create(AbramsGolemEntity::new, SpawnGroup.CREATURE)
                     .dimensions(1f, 2.5f)
-                    .build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(AbramMod.MOD_ID, "abrams-golem")))
+                    .build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(AbramMod.MOD_ID, "abrams_golem")))
     );
 
     public static void registerModEntities() {

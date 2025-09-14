@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "abrammod:block/hyper_copper_block"
+  }
+}

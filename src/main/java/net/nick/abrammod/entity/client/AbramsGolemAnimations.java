@@ -91,7 +91,7 @@ public class AbramsGolemAnimations {
                                     Transformation.Interpolations.CUBIC),
                             new Keyframe(1f, AnimationHelper.createRotationalVector(0f, 0f, 0f),
                                     Transformation.Interpolations.CUBIC))).build();
-    public static final AnimationDefinition IDLE = AnimationDefinition.Builder.create(2f).looping()
+    public static final AnimationDefinition MODEL_IDLE = AnimationDefinition.Builder.create(2f).looping()
             .addBoneAnimation("body",
                     new Transformation(Transformation.Targets.MOVE_ORIGIN,
                             new Keyframe(0f, AnimationHelper.createTranslationalVector(0f, 0f, 0f),

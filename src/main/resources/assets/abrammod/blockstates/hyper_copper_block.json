@@ -1,0 +1,7 @@
+{
+  "variants" : {
+    "": {
+      "model": "abrammod:block/hyper_copper_block"
+    }
+  }
+}
