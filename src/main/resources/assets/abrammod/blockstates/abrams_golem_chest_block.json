@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north,type=single": { "model": "abrammod:block/abrams_golem_chest_block" },
+    "facing=south,type=single": { "model": "abrammod:block/abrams_golem_chest_block", "y": 180 },
+    "facing=west,type=single": { "model": "abrammod:block/abrams_golem_chest_block", "y": 270 },
+    "facing=east,type=single": { "model": "abrammod:block/abrams_golem_chest_block", "y": 90 },
+    "facing=north,type=left": { "model": "abrammod:block/abrams_golem_chest_block_left" },
+    "facing=south,type=left": { "model": "abrammod:block/abrams_golem_chest_block_left", "y": 180 },
+    "facing=west,type=left": { "model": "abrammod:block/abrams_golem_chest_block_left", "y": 270 },
+    "facing=east,type=left": { "model": "abrammod:block/abrams_golem_chest_block_left", "y": 90 },
+    "facing=north,type=right": { "model": "abrammod:block/abrams_golem_chest_block_right" },
+    "facing=south,type=right": { "model": "abrammod:block/abrams_golem_chest_block_right", "y": 180 },
+    "facing=west,type=right": { "model": "abrammod:block/abrams_golem_chest_block_right", "y": 270 },
+    "facing=east,type=right": { "model": "abrammod:block/abrams_golem_chest_block_right", "y": 90 }
+  }
+}

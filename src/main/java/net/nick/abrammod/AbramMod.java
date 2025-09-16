@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.nick.abrammod.block.ModBlocks;
+import net.nick.abrammod.block.entity.ModBlockEntities;
 import net.nick.abrammod.entity.ModEntities;
 import net.nick.abrammod.entity.custom.AbramsGolemEntity;
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ public class AbramMod implements ModInitializer {
         LOGGER.info("AbramMob Mod has started up.");
         ModBlocks.registerModBlocks();
         ModEntities.registerModEntities();
+        ModBlockEntities.registerBlockEntities();
         FabricDefaultAttributeRegistry.register(ModEntities.ABRAMS_GOLEM, AbramsGolemEntity.createAbramGolemAttributes());
 	}
 }

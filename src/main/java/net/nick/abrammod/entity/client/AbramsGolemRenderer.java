@@ -2,10 +2,8 @@ package net.nick.abrammod.entity.client;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.nick.abrammod.AbramMod;
 import net.nick.abrammod.entity.custom.AbramsGolemEntity;

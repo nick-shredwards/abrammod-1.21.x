@@ -14,6 +14,10 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.nick.abrammod.AbramMod;
+import net.nick.abrammod.block.custom.AbramsGolemChestBlock;
+import net.nick.abrammod.block.entity.ModBlockEntities;
+
+import java.util.function.Function;
 
 
 public class ModBlocks {
@@ -21,12 +25,24 @@ public class ModBlocks {
             AbstractBlock.Settings.create().strength(8.0f, 8.0f)
                     .requiresTool().sounds(BlockSoundGroup.COPPER)
                     .luminance(state -> 10).mapColor(MapColor.ORANGE));
+    public static final Block ABRAMS_GOLEM_CHEST_BLOCK = registerBlock("abrams_golem_chest_block",
+            properties -> new AbramsGolemChestBlock(properties.strength(4.0f).sounds(BlockSoundGroup.WOOD).nonOpaque(),
+                    () -> ModBlockEntities.ABRAMS_GOLEM_CHEST_BE));
 
     public static void registerModBlocks() {
         AbramMod.LOGGER.info("Registering ModBlocks for " + AbramMod.MOD_ID);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.add(HYPER_COPPER_BLOCK);
         });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INVENTORY).register(entries -> {
+            entries.add(ABRAMS_GOLEM_CHEST_BLOCK);
+        });
+    }
+
+    private static Block registerBlock(String name, Function<AbstractBlock.Settings, Block> function) {
+        Block toRegister = function.apply(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(AbramMod.MOD_ID, name))));
+        registerBlockItem(name, toRegister);
+        return Registry.register(Registries.BLOCK, Identifier.of(AbramMod.MOD_ID, name), toRegister);
     }
 
     private static Block registerBlock(String name, AbstractBlock.Settings blockSettings) {

@@ -1,20 +1,20 @@
 package net.nick.abrammod.mixin;
 
-import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+import net.nick.abrammod.block.entity.custom.AbramsGolemChestBlockEntity;
 import net.nick.abrammod.entity.custom.AbramsGolemEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(ChestBlockEntity.class)
+@Mixin(AbramsGolemChestBlockEntity.class)
 public class ChestClosingMixin {
     @Inject(at = @At("HEAD"), method = "onClose")
-    private void onChestOpen(PlayerEntity player, CallbackInfo ci) {
-        ChestBlockEntity chest = (ChestBlockEntity) (Object) this;
+    private void onChestClose(PlayerEntity player, CallbackInfo ci) {
+        AbramsGolemChestBlockEntity chest = (AbramsGolemChestBlockEntity) (Object) this;
 
         // Only run on server side
         if (chest.getWorld() != null && !chest.getWorld().isClient()) {

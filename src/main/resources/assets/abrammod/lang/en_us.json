@@ -1,5 +1,9 @@
 {
   "entity.abrammod.abrams_golem": "Abrams Golem",
   "block.abrammod.hyper_copper_block": "Block of Hyper Copper",
-  "item.abrammod.hyper_copper_block": "Hyper Copper Block"
+  "item.abrammod.hyper_copper_block": "Hyper Copper Block",
+  "container.abrammod.chest": "Abrams Golem Chest",
+  "item.abrammod.abrams_golem_chest_block": "Abrams Golem Chest Block",
+  "block.abrammod.abrams_golem_chest_block": "Abrams Golem Chest Block",
+  "container.abrammod.large_chest": "Large Abrams Golem Chest"
 }
